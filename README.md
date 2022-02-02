@@ -1,0 +1,48 @@
+# vite-plugin-fast-react-svg [![npm](https://img.shields.io/npm/v/vite-plugin-fast-react-svg)](https://www.npmjs.com/package/vite-plugin-fast-react-svg)
+
+Turn SVG into React components, without Babel.
+
+## Why
+
+While [svgr](https://github.com/gregberge/svgr) is great, it uses AST transformation from Babel, which is too slow (~300ms per SVG). This plugin uses regex manipulations for SVG -> JSX and esbuild for JSX -> JS (~10ms in average). It's working well for SVG optimized by [svgo](https://github.com/svg/svgo). This plugin will **not** run svgo, so you should run it beforehand and commit the cleaned version.
+
+## Installation
+
+```sh
+npm i -D vite-plugin-fast-react-svg
+```
+
+In your vite config:
+
+```ts
+import { defineConfig } from "vite";
+import svgPlugin from "vite-plugin-fast-react-svg";
+
+export default defineConfig({
+  plugins: [svgPlugin()],
+});
+```
+
+In `tsconfig.json`:
+
+```json5
+{
+  compilerOptions: {
+    types: ["vite-plugin-fast-react-svg/types", "vite/client"],
+  },
+}
+```
+
+## Usage
+
+```jsx
+import Logo from "./logo.svg";
+import base64Data from "./logo.svg?inline";
+
+const Example = () => (
+  <>
+    <Logo />
+    <img src={base64Data} alt="Logo" />
+  </>
+);
+```

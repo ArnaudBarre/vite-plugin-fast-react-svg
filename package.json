@@ -1,0 +1,35 @@
+{
+  "name": "vite-plugin-fast-react-svg",
+  "description": "Turn SVG into React components, without Babel",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "types.d.ts"
+  ],
+  "repository": "github:ArnaudBarre/vite-plugin-fast-react-svg",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "react",
+    "svg"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prettier": "yarn prettier-ci --write",
+    "prettier-ci": "prettier --check '**/*.{ts,json,md,yml}'"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "vite": "^2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.13",
+    "@types/react": "^17.0.38",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13"
+  }
+}
