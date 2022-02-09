@@ -14,12 +14,18 @@ export default function svgPlugin(): Plugin {
         return readFileSync(id.replace("?inline", ""), "utf-8");
       }
     },
-    transform(code, id) {
+    async transform(svg, id) {
       if (id.endsWith(".svg")) {
-        return transform(svgToJSX(code), { loader: "jsx" });
+        const { code, warnings } = await transform(svgToJSX(svg), {
+          loader: "jsx",
+        });
+        for (const warning of warnings) {
+          console.log(warning.location, warning.text);
+        }
+        return code;
       }
       if (id.endsWith(".svg?inline")) {
-        const base64 = Buffer.from(code).toString("base64");
+        const base64 = Buffer.from(svg).toString("base64");
         return `export default "data:image/svg+xml;base64,${base64}"`;
       }
     },
