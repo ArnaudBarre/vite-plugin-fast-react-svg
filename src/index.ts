@@ -6,26 +6,21 @@ export default function svgPlugin(): Plugin {
   return {
     name: "svg",
     enforce: "pre",
-    load(id) {
+    async load(id) {
       if (id.endsWith(".svg")) {
-        return readFileSync(id, "utf-8");
-      }
-      if (id.endsWith(".svg?inline")) {
-        return readFileSync(id.replace("?inline", ""), "utf-8");
-      }
-    },
-    async transform(svg, id) {
-      if (id.endsWith(".svg")) {
-        const { code, warnings } = await transform(svgToJSX(svg), {
-          loader: "jsx",
-        });
+        const { code, warnings } = await transform(
+          svgToJSX(readFileSync(id, "utf-8")),
+          { loader: "jsx" }
+        );
         for (const warning of warnings) {
           console.log(warning.location, warning.text);
         }
         return code;
       }
       if (id.endsWith(".svg?inline")) {
-        const base64 = Buffer.from(svg).toString("base64");
+        const base64 = Buffer.from(
+          readFileSync(id.replace("?inline", ""), "utf-8")
+        ).toString("base64");
         return `export default "data:image/svg+xml;base64,${base64}"`;
       }
     },
