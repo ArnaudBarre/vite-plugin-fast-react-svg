@@ -2,9 +2,11 @@
 
 Turn SVG into React components, without Babel.
 
+⚠️ This plugin expects svg to be cleanup by [svgo](https://github.com/svg/svgo) with `convertStyleToAttrs` enable. You can also use the [web version](https://jakearchibald.github.io/svgomg/) and toggle `Style to attributes`.
+
 ## Why
 
-While [svgr](https://github.com/gregberge/svgr) is great, it uses AST transformation from Babel, which is too slow (~300ms per SVG). This plugin uses regex manipulations for SVG -> JSX and esbuild for JSX -> JS (~10ms in average). It's working well for SVG optimized by [svgo](https://github.com/svg/svgo). This plugin will **not** run svgo, so you should run it beforehand and commit the cleaned version.
+While [svgr](https://github.com/gregberge/svgr) is great, it uses AST transformation from Babel, which is too slow (~300ms per SVG). This plugin uses regex manipulations for SVG -> JSX and esbuild for JSX -> JS (~10ms in average). It's working well for SVG optimized by [svgo](https://github.com/svg/svgo).
 
 ## Installation
 
