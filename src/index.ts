@@ -27,7 +27,7 @@ export default function svgPlugin(): Plugin {
   };
 }
 
-const svgToJSX = (svg: string) =>
+export const svgToJSX = (svg: string) =>
   `import React from "react";const ReactComponent = (props) => (${svg
     .replace(/\s([a-z-:]*)="[^"]*"/gu, (string, key: string) => {
       if (key.startsWith("data-")) return string;

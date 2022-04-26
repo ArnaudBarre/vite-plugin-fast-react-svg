@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+Expose svgToJSX for reuse in other build pipelines
+
 ## 0.1.2
 
 Use only `load` to skip source maps
