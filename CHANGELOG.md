@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+Add vite@3 to peer dependency range
+
 ## 0.1.3
 
 Expose svgToJSX for reuse in other build pipelines
