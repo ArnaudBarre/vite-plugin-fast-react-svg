@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { transform } from "esbuild";
 import { Plugin } from "vite";
 
-export default function svgPlugin(): Plugin {
+export function svgPlugin(): Plugin {
   return {
     name: "svg",
     enforce: "pre",

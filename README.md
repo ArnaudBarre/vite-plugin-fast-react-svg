@@ -18,7 +18,7 @@ In your vite config:
 
 ```ts
 import { defineConfig } from "vite";
-import svgPlugin from "vite-plugin-fast-react-svg";
+import { svgPlugin } from "vite-plugin-fast-react-svg";
 
 export default defineConfig({
   plugins: [svgPlugin()],

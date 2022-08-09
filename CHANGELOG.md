@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+Breaking: Use named export instead of default export for better esm/cjs interop. Closes #2
+
+To migrate, replace your import by `import { svgPlugin } from "vite-plugin-fast-react-svg";`
+
 ## 0.1.4
 
 Add vite@3 to peer dependency range
