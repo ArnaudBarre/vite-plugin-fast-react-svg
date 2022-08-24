@@ -2,14 +2,14 @@ import { readFileSync } from "fs";
 import { transform } from "esbuild";
 import { Plugin } from "vite";
 
-export function svgPlugin(): Plugin {
+export function svgPlugin(opts?: { useInnerHTML?: boolean }): Plugin {
   return {
     name: "svg",
     enforce: "pre",
     async load(id) {
       if (id.endsWith(".svg")) {
         const { code, warnings } = await transform(
-          svgToJSX(readFileSync(id, "utf-8")),
+          svgToJSX(readFileSync(id, "utf-8"), opts?.useInnerHTML),
           { loader: "jsx" }
         );
         for (const warning of warnings) {
@@ -27,15 +27,30 @@ export function svgPlugin(): Plugin {
   };
 }
 
-export const svgToJSX = (svg: string) =>
-  `import React from "react";const ReactComponent = (props) => (${svg
-    .replace(/\s([a-z-:]*)="[^"]*"/gu, (string, key: string) => {
-      if (key.startsWith("data-")) return string;
-      const keyWithoutDashes = camelCaseOn(key, "-");
-      const keyWithoutDots = camelCaseOn(keyWithoutDashes, ":");
-      return string.replace(key, keyWithoutDots);
-    })
-    .replace(">", " {...props}>")});export default ReactComponent`;
+export const svgToJSX = (svg: string, useInnerHTML?: boolean) => {
+  let jsx: string;
+  if (useInnerHTML) {
+    const index = svg.indexOf(">");
+    const content = svg
+      .slice(index + 1, svg.indexOf("</svg>"))
+      .trim()
+      .replace(/\s+/g, " ");
+    jsx = `${updatePropsCase(
+      svg.slice(0, index)
+    )} {...props} dangerouslySetInnerHTML={{ __html: '${content}' }} />`;
+  } else {
+    jsx = updatePropsCase(svg).replace(">", " {...props}>");
+  }
+  return `import React from "react";const ReactComponent = (props) => (${jsx});export default ReactComponent;`;
+};
+
+const updatePropsCase = (svg: string) =>
+  svg.replace(/\s([a-z-:]*)="[^"]*"/gu, (string, key: string) => {
+    if (key.startsWith("data-")) return string;
+    const keyWithoutDashes = camelCaseOn(key, "-");
+    const keyWithoutDots = camelCaseOn(keyWithoutDashes, ":");
+    return string.replace(key, keyWithoutDots);
+  });
 
 const camelCaseOn = (string: string, delimiter: string) =>
   string

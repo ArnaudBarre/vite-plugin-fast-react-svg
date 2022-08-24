@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+Added `useInnerHTML` option to use `dangerouslySetInnerHTML` for SVG contents which improve bundle size.
+
 ## 0.2.0
 
 Breaking: Use named export instead of default export for better esm/cjs interop. Closes #2

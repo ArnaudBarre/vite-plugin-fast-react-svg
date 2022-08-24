@@ -21,7 +21,7 @@ import { defineConfig } from "vite";
 import { svgPlugin } from "vite-plugin-fast-react-svg";
 
 export default defineConfig({
-  plugins: [svgPlugin()],
+  plugins: [svgPlugin({ useInnerHTML: true })],
 });
 ```
 
@@ -48,3 +48,7 @@ const Example = () => (
   </>
 );
 ```
+
+## Options
+
+**useInnerHTML**: Set to true to use `dangerouslySetInnerHTML` for SVG contents, which improve bundle size. Added in 0.3.0.
