@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-fast-react-svg",
   "description": "Turn SVG into React components, without Babel",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "dist/index.js",

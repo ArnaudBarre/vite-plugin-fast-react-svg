@@ -37,11 +37,11 @@ export const svgToJSX = (svg: string, useInnerHTML?: boolean) => {
       .replace(/\s+/g, " ");
     jsx = `${updatePropsCase(
       svg.slice(0, index)
-    )} {...props} dangerouslySetInnerHTML={{ __html: '${content}' }} />`;
+    )} ref={ref} {...props} dangerouslySetInnerHTML={{ __html: '${content}' }} />`;
   } else {
-    jsx = updatePropsCase(svg).replace(">", " {...props}>");
+    jsx = updatePropsCase(svg).replace(">", " ref={ref} {...props}>");
   }
-  return `import React from "react";const ReactComponent = (props) => (${jsx});export default ReactComponent;`;
+  return `import React from "react";const ReactComponent = React.forwardRef((props, ref) => (${jsx}));export default ReactComponent;`;
 };
 
 const updatePropsCase = (svg: string) =>

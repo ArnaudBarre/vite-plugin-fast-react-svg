@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+Forward ref to svg element
+
 ## 0.3.0
 
 Added `useInnerHTML` option to use `dangerouslySetInnerHTML` for SVG contents which improve bundle size.
