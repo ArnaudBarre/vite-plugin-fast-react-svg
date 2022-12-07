@@ -6,7 +6,7 @@ Turn SVG into React components, without Babel.
 
 ## Why
 
-While [svgr](https://github.com/gregberge/svgr) is great, it uses AST transformation from Babel, which is too slow (~300ms per SVG). This plugin uses regex manipulations for SVG -> JSX and esbuild for JSX -> JS (~10ms in average). It's working well for SVG optimized by [svgo](https://github.com/svg/svgo).
+While [svgr](https://github.com/gregberge/svgr) is great, it uses AST transformation from Babel, which is too slow (~300ms per SVG). This plugin uses regex manipulations and `dangerouslySetInnerHTML`, which is almost instantaneous. It's working well for SVG optimized by [svgo](https://github.com/svg/svgo).
 
 ## Installation
 
@@ -21,7 +21,7 @@ import { defineConfig } from "vite";
 import { svgPlugin } from "vite-plugin-fast-react-svg";
 
 export default defineConfig({
-  plugins: [svgPlugin({ useInnerHTML: true })],
+  plugins: [svgPlugin()],
 });
 ```
 
@@ -48,7 +48,3 @@ const Example = () => (
   </>
 );
 ```
-
-## Options
-
-**useInnerHTML**: Set to true to use `dangerouslySetInnerHTML` for SVG contents, which improve bundle size. Added in 0.3.0.

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0
+
+Turn SVG into React components, even faster.
+
+This new version uses only regex and dangerouslySetInnerHTML to directly create a JS output.
+
+Breaking changes:
+
+- No more options available
+- Expose the new `svgToJS` function instead of the previous `svgToJSX`
+
+Compatible with Vite 4.
+
 ## 0.3.1
 
 Forward ref to svg element
