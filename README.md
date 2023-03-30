@@ -35,6 +35,13 @@ In `tsconfig.json`:
 }
 ```
 
+If you have a `d.ts` file containing `/// <reference types="vite/client" />`, you will need to override the `.svg` types accordingly:
+
+```
+/// <reference types="vite-plugin-fast-react-svg/types" />
+/// <reference types="vite/client" />
+```
+
 ## Usage
 
 ```jsx
