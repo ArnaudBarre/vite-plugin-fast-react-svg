@@ -35,6 +35,15 @@ In `tsconfig.json`:
 }
 ```
 
+If you use a custom `.d.ts` file instead of `tsconfig.json` to include Vite Client Types, you will need to modify it accordingly:
+
+```
+/// <reference types="vite-plugin-fast-react-svg/types" />
+/// <reference types="vite/client" />
+```
+
+> N.B: You only need to include Vite Client Types via `tsconfig.json` _or_ a custom `d.ts` file. Both are not needed, so if you have included the types in `tsconfig.json` you can safely delete your `.d.ts` file.
+
 ## Usage
 
 ```jsx
