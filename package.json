@@ -1,26 +1,25 @@
 {
   "name": "vite-plugin-fast-react-svg",
-  "version": "0.4.0",
+  "version": "0.5.0",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "build": "scripts/bundle.ts",
-    "prettier": "yarn prettier-ci --write",
+    "prettier": "bun prettier-ci --write",
     "prettier-ci": "prettier --ignore-path=.gitignore --check '**/*.{ts,json,md,yml}'",
-    "ci": "tsc && bun prettier-ci && bun run build"
-  },
-  "prettier": {
-    "trailingComma": "all"
+    "ci": "tsc && bun prettier-ci && bun run build && cd dist && publint"
   },
   "peerDependencies": {
     "react": ">=16",
-    "vite": "^2 || ^3 || ^4"
+    "vite": "^5"
   },
   "devDependencies": {
-    "@nabla/tnode": "^0.8.0",
-    "@types/node": "^18.11.11",
-    "@types/react": "^18.0.26",
-    "prettier": "^2.8.1",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0-beta.4"
+    "@arnaud-barre/tnode": "^0.19.2",
+    "@types/node": "^18.19.50",
+    "@types/react": "^18.3.8",
+    "prettier": "3.0.3",
+    "publint": "^0.2.11",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.7"
   }
 }

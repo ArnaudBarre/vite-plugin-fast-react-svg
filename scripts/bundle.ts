@@ -1,9 +1,9 @@
 #!/usr/bin/env tnode
-import { rmSync, writeFileSync } from "fs";
-import { execSync } from "child_process";
+import { execSync } from "node:child_process";
+import { rmSync, writeFileSync } from "node:fs";
 import { build } from "esbuild";
 
-import * as packageJSON from "../package.json";
+import packageJSON from "../package.json";
 
 rmSync("dist", { force: true, recursive: true });
 
@@ -11,8 +11,9 @@ build({
   bundle: true,
   entryPoints: ["src/index.ts"],
   outdir: "dist",
+  format: "esm",
   platform: "node",
-  target: "node14",
+  target: "node18",
   legalComments: "inline",
   external: Object.keys(packageJSON.peerDependencies),
 }).then(() => {
@@ -36,7 +37,16 @@ export declare const svgToJS: (svg: string, production: boolean) => string;
         author: "Arnaud Barré (https://github.com/ArnaudBarre)",
         license: packageJSON.license,
         repository: "github:ArnaudBarre/vite-plugin-fast-react-svg",
-        main: "index.js",
+        type: "module",
+        exports: {
+          ".": {
+            types: "./index.d.ts",
+            import: "./index.js",
+          },
+          "./types": {
+            types: "./types.d.ts",
+          },
+        },
         keywords: ["vite", "vite-plugin", "react", "svg"],
         peerDependencies: packageJSON.peerDependencies,
       },

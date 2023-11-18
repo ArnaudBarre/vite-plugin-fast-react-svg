@@ -5,8 +5,3 @@ declare module "*.svg" {
   >;
   export default ReactComponent;
 }
-
-declare module "*.svg?inline" {
-  const data: string;
-  export default data;
-}

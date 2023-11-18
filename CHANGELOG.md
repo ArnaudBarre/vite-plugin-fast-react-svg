@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+- Drop support for `?inline`, this now supported into core in v5
+- ESM only, requires node 18
+- Vite 5 as a peer deps
+
 ## 0.4.0
 
 Turn SVG into React components, even faster.

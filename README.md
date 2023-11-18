@@ -48,12 +48,10 @@ If you use a custom `.d.ts` file instead of `tsconfig.json` to include Vite Clie
 
 ```jsx
 import Logo from "./logo.svg";
-import base64Data from "./logo.svg?inline";
 
 const Example = () => (
   <>
     <Logo />
-    <img src={base64Data} alt="Logo" />
   </>
 );
 ```

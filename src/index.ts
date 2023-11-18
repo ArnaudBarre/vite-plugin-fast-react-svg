@@ -1,5 +1,5 @@
-import { readFileSync } from "fs";
-import { Plugin } from "vite";
+import { readFileSync } from "node:fs";
+import type { Plugin } from "vite";
 
 export function svgPlugin(): Plugin {
   let production = false;
@@ -12,12 +12,6 @@ export function svgPlugin(): Plugin {
     async load(id) {
       if (id.endsWith(".svg")) {
         return svgToJS(readFileSync(id, "utf-8"), production);
-      }
-      if (id.endsWith(".svg?inline")) {
-        const base64 = Buffer.from(
-          readFileSync(id.replace("?inline", ""), "utf-8"),
-        ).toString("base64");
-        return `export default "data:image/svg+xml;base64,${base64}"`;
       }
     },
   };

@@ -1,16 +1,16 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["playground"],
   "compilerOptions": {
-    /* Target node 18 */
-    "module": "NodeNext",
-    "lib": ["ES2021"],
     "target": "ES2021",
+    "useDefineForClassFields": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
 
     /* Bundler mode */
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
