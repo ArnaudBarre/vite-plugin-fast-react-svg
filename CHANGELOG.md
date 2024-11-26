@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+- Vite 6 as a peer deps
+
 ## 0.5.0
 
 - Drop support for `?inline`, this now supported into core in v5

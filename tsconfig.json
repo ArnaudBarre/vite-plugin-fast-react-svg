@@ -3,14 +3,13 @@
   "exclude": ["playground"],
   "compilerOptions": {
     /* Target node 18 */
-    "module": "NodeNext",
+    "module": "ES2022",
     "lib": ["ES2021"],
     "target": "ES2021",
 
     /* Bundler mode */
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
