@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+- Add vite@7 to peer dependency ranges
+
 ## 0.5.1
 
 - Vite 6 as a peer deps

@@ -13,7 +13,7 @@ build({
   outdir: "dist",
   format: "esm",
   platform: "node",
-  target: "node18",
+  target: "node20",
   legalComments: "inline",
   external: Object.keys(packageJSON.peerDependencies),
 }).then(() => {
@@ -39,13 +39,8 @@ export declare const svgToJS: (svg: string, production: boolean) => string;
         repository: "github:ArnaudBarre/vite-plugin-fast-react-svg",
         type: "module",
         exports: {
-          ".": {
-            types: "./index.d.ts",
-            import: "./index.js",
-          },
-          "./types": {
-            types: "./types.d.ts",
-          },
+          ".": "./index.js",
+          "./types": { types: "./types.d.ts" },
         },
         keywords: ["vite", "vite-plugin", "react", "svg"],
         peerDependencies: packageJSON.peerDependencies,

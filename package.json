@@ -1,6 +1,7 @@
 {
   "name": "vite-plugin-fast-react-svg",
-  "version": "0.5.1",
+  "version": "0.5.2",
+  "private": true,
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -11,15 +12,15 @@
   },
   "peerDependencies": {
     "react": "^18.3.1",
-    "vite": "^5 || ^6"
+    "vite": "^5 || ^6 || ^7"
   },
   "devDependencies": {
-    "@arnaud-barre/tnode": "^0.24.0",
+    "@arnaud-barre/tnode": "^0.25.0",
     "@types/node": "^20.17.8",
     "@types/react": "^18.3.12",
     "prettier": "3.0.3",
-    "publint": "^0.2.12",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.0"
+    "publint": "^0.3.12",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.0"
   }
 }
