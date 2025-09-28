@@ -9,10 +9,11 @@ export function svgPlugin(): Plugin {
     config(_, env) {
       production = env.command === "build";
     },
-    async load(id) {
-      if (id.endsWith(".svg")) {
+    load: {
+      filter: { id: /.svg$/ },
+      handler(id) {
         return svgToJS(readFileSync(id, "utf-8"), production);
-      }
+      },
     },
   };
 }

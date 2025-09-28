@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0
+
+- Use rolldown filters. Requires Vite 6.3+ or Vite 7
+- Add React 19 to peer dependency ranges
+
 ## 0.5.2
 
 - Add vite@7 to peer dependency ranges

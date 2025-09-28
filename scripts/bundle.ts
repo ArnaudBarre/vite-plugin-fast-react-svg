@@ -1,9 +1,9 @@
-#!/usr/bin/env tnode
+#!/usr/bin/env node
 import { execSync } from "node:child_process";
 import { rmSync, writeFileSync } from "node:fs";
 import { build } from "esbuild";
 
-import packageJSON from "../package.json";
+import packageJSON from "../package.json" with { type: "json" };
 
 rmSync("dist", { force: true, recursive: true });
 
@@ -17,7 +17,7 @@ build({
   legalComments: "inline",
   external: Object.keys(packageJSON.peerDependencies),
 }).then(() => {
-  execSync("cp LICENSE README.md types.d.ts dist/");
+  execSync("cp LICENSE README.md src/types.d.ts dist/");
 
   writeFileSync(
     "dist/index.d.ts",
@@ -38,10 +38,7 @@ export declare const svgToJS: (svg: string, production: boolean) => string;
         license: packageJSON.license,
         repository: "github:ArnaudBarre/vite-plugin-fast-react-svg",
         type: "module",
-        exports: {
-          ".": "./index.js",
-          "./types": { types: "./types.d.ts" },
-        },
+        exports: { ".": "./index.js", "./types": { types: "./types.d.ts" } },
         keywords: ["vite", "vite-plugin", "react", "svg"],
         peerDependencies: packageJSON.peerDependencies,
       },
