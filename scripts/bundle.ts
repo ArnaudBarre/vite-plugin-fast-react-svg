@@ -1,20 +1,17 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import { execSync } from "node:child_process";
 import { rmSync, writeFileSync } from "node:fs";
-import { build } from "esbuild";
+import { build } from "bun";
 
 import packageJSON from "../package.json" with { type: "json" };
 
 rmSync("dist", { force: true, recursive: true });
 
 build({
-  bundle: true,
-  entryPoints: ["src/index.ts"],
+  entrypoints: ["src/index.ts"],
   outdir: "dist",
   format: "esm",
-  platform: "node",
-  target: "node20",
-  legalComments: "inline",
+  target: "node",
   external: Object.keys(packageJSON.peerDependencies),
 }).then(() => {
   execSync("cp LICENSE README.md src/types.d.ts dist/");

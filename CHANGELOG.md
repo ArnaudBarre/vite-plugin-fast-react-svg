@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Add vite@8 to peer dependency ranges
+
 ## 0.6.0
 
 - Use rolldown filters. Requires Vite 6.3+ or Vite 7

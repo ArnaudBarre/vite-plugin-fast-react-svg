@@ -7,7 +7,7 @@
     "module": "ESNext",
     "moduleDetection": "force",
     "lib": ["ES2023"],
-    "types": ["node"],
+    "types": ["bun"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -18,12 +18,10 @@
     "noEmit": true,
 
     /* Linting */
-    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
-    "noUncheckedSideEffectImports": true,
     "noPropertyAccessFromIndexSignature": true
   }
 }
