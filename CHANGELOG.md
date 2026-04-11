@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2
+
+- Republish 0.6.1 with trusted publishing
+
 ## 0.6.1
 
 - Add vite@8 to peer dependency ranges
